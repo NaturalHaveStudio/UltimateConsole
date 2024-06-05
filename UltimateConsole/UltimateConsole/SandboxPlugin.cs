@@ -264,6 +264,7 @@ namespace UltimateConsole
                     {
                         if (product1name != "")
                         {
+                            Console.WriteLine("Выберите количество товара для приобретения");
                             int purchase_count = Int32.Parse(Console.ReadLine());
                             if (purchase_count > 0)
                             {
@@ -300,6 +301,7 @@ namespace UltimateConsole
                     {
                         if (product2name != "")
                         {
+                            Console.WriteLine("Выберите количество товара для приобретения");
                             int purchase_count = Int32.Parse(Console.ReadLine());
                             if (purchase_count > 0)
                             {
@@ -336,6 +338,7 @@ namespace UltimateConsole
                     {
                         if (product3name != "")
                         {
+                            Console.WriteLine("Выберите количество товара для приобретения");
                             int purchase_count = Int32.Parse(Console.ReadLine());
                             if (purchase_count > 0)
                             {
