@@ -42,8 +42,8 @@ namespace UltimateConsole
                 Console.WriteLine(" ");
                 if (from_user == "help")
                 {
-                    Console.WriteLine("!Каждая команда пишется без пробелов в конце и другого текста!");
-                    Console.WriteLine("!Вам просто нужно ввести сам текст, другие значения вы будете вводить позже!");
+                    Console.WriteLine("!Каждая команда пишется без пробелов и другого текста в конце!");
+                    Console.WriteLine("!Вам просто нужно ввести саму команду, другие значения вы будете вводить позже!");
                     Console.WriteLine(" ");
                     Console.WriteLine("help - Страница с командами");
                     Console.WriteLine(" ");
@@ -167,7 +167,7 @@ namespace UltimateConsole
                     }
                     else if (product_num == "2")
                     {
-                        if (product2count != 0)
+                        if (product2count == 0)
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
@@ -194,7 +194,7 @@ namespace UltimateConsole
                     }
                     else if (product_num == "3")
                     {
-                        if (product3count != 0)
+                        if (product3count == 0)
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
@@ -232,18 +232,21 @@ namespace UltimateConsole
                     if (product_removenum == "1")
                     {
                         product1count = 0;
+                        balance += product1price*product1PurchasedCount;
                         product1name = "";
                         Console.WriteLine("Вы успешно удалили товар №1");
                     } 
                     else if (product_removenum == "2")
                     {
                         product2count = 0;
+                        balance += product2price * product2PurchasedCount;
                         product2name = "";
                         Console.WriteLine("Вы успешно удалили товар №2");
                     } 
                     else if (product_removenum == "3")
                     {
                         product3count = 0;
+                        balance += product3price * product3PurchasedCount;
                         product3name = "";
                         Console.WriteLine("Вы успешно удалили товар №3");
                     }
