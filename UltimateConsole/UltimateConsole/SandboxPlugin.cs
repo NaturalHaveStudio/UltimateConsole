@@ -35,12 +35,16 @@ namespace UltimateConsole
             while (true)
             {
                 Console.WriteLine(" ");
-                Console.WriteLine("Введите команду(sanbox): ");
+                Console.WriteLine("help - Страница с командами");
+                Console.WriteLine("Введите команду(sanbox.plugin): ");
                 Console.Write(">>> ");
                 string from_user = Console.ReadLine();
                 Console.WriteLine(" ");
                 if (from_user == "help")
                 {
+                    Console.WriteLine("!Каждая команда пишется без пробелов в конце и другого текста!");
+                    Console.WriteLine("!Вам просто нужно ввести сам текст, другие значения вы будете вводить позже!");
+                    Console.WriteLine(" ");
                     Console.WriteLine("help - Страница с командами");
                     Console.WriteLine(" ");
                     Console.WriteLine("balance - Вывести текущий баланс");
@@ -95,7 +99,7 @@ namespace UltimateConsole
                     Console.WriteLine("Товары в ассортименте:");
                     Console.WriteLine(" ");
                     bool check = false;
-                    if (product1name != "")
+                    if (product1count != 0)
                     {
                         Console.WriteLine("Товар №1 ");
                         Console.WriteLine("Имя: " + product1name);
@@ -105,7 +109,7 @@ namespace UltimateConsole
                         Console.WriteLine(" ");
                         check = true;
                     }
-                    if (product2name != "")
+                    if (product2count != 0)
                     {
                         Console.WriteLine("Товар №2 ");
                         Console.WriteLine("Имя: " + product2name);
@@ -115,7 +119,7 @@ namespace UltimateConsole
                         Console.WriteLine(" ");
                         check = true;
                     }
-                    if (product3name != "")
+                    if (product3count != 0)
                     {
                         Console.WriteLine("Товар №3 ");
                         Console.WriteLine("Имя: " + product3name);
@@ -136,7 +140,7 @@ namespace UltimateConsole
                     string product_num = Console.ReadLine();
                     if (product_num == "1")
                     {
-                        if (product1name == "")
+                        if (product1count == 0)
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
@@ -163,7 +167,7 @@ namespace UltimateConsole
                     }
                     else if (product_num == "2")
                     {
-                        if (product2name == "")
+                        if (product2count != 0)
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
@@ -190,7 +194,7 @@ namespace UltimateConsole
                     }
                     else if (product_num == "3")
                     {
-                        if (product3name == "")
+                        if (product3count != 0)
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
@@ -227,20 +231,20 @@ namespace UltimateConsole
                     string product_removenum = Console.ReadLine();
                     if (product_removenum == "1")
                     {
+                        product1count = 0;
                         product1name = "";
-                        product1PurchasedCount = 0;
                         Console.WriteLine("Вы успешно удалили товар №1");
                     } 
                     else if (product_removenum == "2")
                     {
+                        product2count = 0;
                         product2name = "";
-                        product2PurchasedCount = 0;
                         Console.WriteLine("Вы успешно удалили товар №2");
                     } 
                     else if (product_removenum == "3")
                     {
+                        product3count = 0;
                         product3name = "";
-                        product3PurchasedCount = 0;
                         Console.WriteLine("Вы успешно удалили товар №3");
                     }
                     else
@@ -257,20 +261,31 @@ namespace UltimateConsole
                     {
                         if (product1name != "")
                         {
-                            if (balance >= product1price)
+                            int purchase_count = Int32.Parse(Console.ReadLine());
+                            if (purchase_count > 0)
                             {
-                                balance -= product1price;
-                                product1count -= 1;
-                                product1PurchasedCount += 1;
-                                if (product1count <= 0)
+                                if (product1count >= purchase_count)
                                 {
-                                    product1name = "";
+                                    if (balance >= product1price * purchase_count)
+                                    {
+                                        balance -= product1price * purchase_count;
+                                        product1count -= purchase_count;
+                                        product1PurchasedCount += purchase_count;
+                                        Console.WriteLine("Вы успешно приобрели товар №1");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("У вас недостаточно средств!");
+                                    }
                                 }
-                                Console.WriteLine("Вы успешно приобрели товар №1");
-                            } 
+                                else
+                                {
+                                    Console.WriteLine("В магазине нет столько товара");
+                                }
+                            }
                             else
                             {
-                                Console.WriteLine("У вас недостаточно средств!");
+                                Console.WriteLine("Количество приобретённого товара должно составлять больше 0");
                             }
                         } 
                         else
@@ -282,20 +297,31 @@ namespace UltimateConsole
                     {
                         if (product2name != "")
                         {
-                            if (balance >= product2price)
+                            int purchase_count = Int32.Parse(Console.ReadLine());
+                            if (purchase_count > 0)
                             {
-                                balance -= product2price;
-                                product2count -= 1;
-                                product2PurchasedCount += 1;
-                                if (product2count <= 0)
+                                if (product2count >= purchase_count)
                                 {
-                                    product2name = "";
+                                    if (balance >= product2price * purchase_count)
+                                    {
+                                        balance -= product2price * purchase_count;
+                                        product2count -= purchase_count;
+                                        product2PurchasedCount += purchase_count;
+                                        Console.WriteLine("Вы успешно приобрели товар №1");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("У вас недостаточно средств!");
+                                    }
                                 }
-                                Console.WriteLine("Вы успешно приобрели товар №2");
+                                else
+                                {
+                                    Console.WriteLine("В магазине нет столько товара");
+                                }
                             }
                             else
                             {
-                                Console.WriteLine("У вас недостаточно средств!");
+                                Console.WriteLine("Количество приобретённого товара должно составлять больше 0");
                             }
                         }
                         else
@@ -307,20 +333,31 @@ namespace UltimateConsole
                     {
                         if (product3name != "")
                         {
-                            if (balance >= product3price)
+                            int purchase_count = Int32.Parse(Console.ReadLine());
+                            if (purchase_count > 0)
                             {
-                                balance -= product3price;
-                                product3count -= 1;
-                                product3PurchasedCount += 1;
-                                if (product3count <= 0)
+                                if (product3count >= purchase_count)
                                 {
-                                    product3name = "";
+                                    if (balance >= product3price * purchase_count)
+                                    {
+                                        balance -= product3price * purchase_count;
+                                        product3count -= purchase_count;
+                                        product3PurchasedCount += purchase_count;
+                                        Console.WriteLine("Вы успешно приобрели товар №1");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("У вас недостаточно средств!");
+                                    }
                                 }
-                                Console.WriteLine("Вы успешно приобрели товар №3");
+                                else
+                                {
+                                    Console.WriteLine("В магазине нет столько товара");
+                                }
                             }
                             else
                             {
-                                Console.WriteLine("У вас недостаточно средств!");
+                                Console.WriteLine("Количество приобретённого товара должно составлять больше 0");
                             }
                         }
                         else

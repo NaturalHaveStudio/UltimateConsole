@@ -13,6 +13,7 @@ namespace UltimateConsole
             while(true)
             {
                 string from_user;
+                Console.WriteLine("help - Страница с командами");
                 Console.WriteLine("Введите команду:");
                 Console.Write(">>> ");
                 from_user = Console.ReadLine();

@@ -5,3 +5,7 @@ C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\bin\Debug\UltimateCons
 C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.pdb
 C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.exe
 C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.pdb
+C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.exe.manifest
+C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.application
+C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.exe.manifest
+C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.application
