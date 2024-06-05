@@ -9,3 +9,14 @@ C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\bin\Debug\UltimateCons
 C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.application
 C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.exe.manifest
 C:\Users\Lev\source\repos\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.application
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.exe.config
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.exe.manifest
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.application
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.exe
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\bin\Debug\UltimateConsole.pdb
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.csproj.AssemblyReference.cache
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.csproj.CoreCompileInputs.cache
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.exe.manifest
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.application
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.exe
+C:\Users\Lev\Documents\GitHub\UltimateConsole\UltimateConsole\UltimateConsole\obj\Debug\UltimateConsole.pdb

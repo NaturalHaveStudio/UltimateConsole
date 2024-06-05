@@ -264,7 +264,7 @@ namespace UltimateConsole
                     {
                         if (product1name != "")
                         {
-                            Console.WriteLine("Выберите количество товара для приобретения");
+                            Console.WriteLine("Выберите количество товара для приобретения ");
                             int purchase_count = Int32.Parse(Console.ReadLine());
                             if (purchase_count > 0)
                             {
