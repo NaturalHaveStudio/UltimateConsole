@@ -10,6 +10,8 @@ namespace UltimateConsole
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("UltimateConsole - v1.0.5");
+            Console.WriteLine(" ");
             while(true)
             {
                 string from_user;

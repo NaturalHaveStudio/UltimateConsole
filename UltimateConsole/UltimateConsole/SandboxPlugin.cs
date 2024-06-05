@@ -32,6 +32,11 @@ namespace UltimateConsole
             int product1PurchasedCount = 0;
             int product2PurchasedCount = 0;
             int product3PurchasedCount = 0;
+
+            string transition1 = "none";
+            string transition2 = "none";
+            string transition3 = "none";
+
             while (true)
             {
                 Console.WriteLine(" ");
@@ -60,6 +65,9 @@ namespace UltimateConsole
                     Console.WriteLine("shop:buy - Приобрести один из трёх товаров");
                     Console.WriteLine("shop:remove - Удалить один из трёх товаров");
                     Console.WriteLine(" ");
+                    Console.WriteLine("transactions - Посмотреть ваши 3 последние транзакции");
+                    Console.WriteLine("transactions:reset - Сбросить ваши последние транзакции");
+                    Console.WriteLine(" ");
                     Console.WriteLine("inventory - Страница с приобретёнными товарами");
                 }
                 else if (from_user == "balance")
@@ -69,12 +77,56 @@ namespace UltimateConsole
                 else if (from_user == "balance:set")
                 {
                     Console.Write("Введите сумму: ");
-                    int balance_set = Int32.Parse(Console.ReadLine());
-                    balance = balance_set;
-                    Console.WriteLine("Ваш баланс успешно установлен на " + balance + "$");
+                    int number;
+                    bool is_balance_set = Int32.TryParse(Console.ReadLine(), out number);
+                    if (is_balance_set)
+                    {
+                        balance = number;
+                        Console.WriteLine("Ваш баланс успешно установлен на " + balance + "$");
+
+                        if (transition1 == "none")
+                        {
+                            transition1 = "+ Ваш счёт был изменён на " + number;
+                        }
+                        else if (transition2 == "none")
+                        {
+                            transition2 = "+ Ваш счёт был изменён на " + number;
+                        }
+                        else if (transition3 == "none")
+                        {
+                            transition3 = "+ Ваш счёт был изменён на " + number;
+                        }
+                        else
+                        {
+                            transition3 = transition2;
+                            transition2 = transition1;
+                            transition1 = "+ Ваш счёт был изменён на " + number;
+                        }
+                    } else
+                    {
+                        Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                    }
                 }
                 else if (from_user == "balance:reset")
                 {
+                    if (transition1 == "none")
+                    {
+                        transition1 = "- Ваш баланс был сброшен";
+                    }
+                    else if (transition2 == "none")
+                    {
+                        transition2 = "- Ваш баланс был сброшен";
+                    }
+                    else if (transition3 == "none")
+                    {
+                        transition3 = "- Ваш баланс был сброшен";
+                    }
+                    else
+                    {
+                        transition3 = transition2;
+                        transition2 = transition1;
+                        transition1 = "- Ваш баланс был сброшен";
+                    }
                     balance = 0;
                     Console.WriteLine("Ваш баланс был успешно сброшен!");
                 }
@@ -144,21 +196,35 @@ namespace UltimateConsole
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
-                            product1name = product_name;
 
                             Console.Write("Введите стоимость товара: ");
-                            int product_price = Int32.Parse(Console.ReadLine());
-                            product1price = product_price;
+                            int number1;
+                            bool is_product_price = Int32.TryParse(Console.ReadLine(), out number1);
+                            if (is_product_price)
+                            {
+                                int number2;
+                                Console.Write("Введите кол-во товара: ");
+                                bool is_product_count = Int32.TryParse(Console.ReadLine(), out number2);
+                                if (is_product_count)
+                                {
+                                    Console.Write("Введите название компании производителя: ");
+                                    string product_company = Console.ReadLine();
 
-                            Console.Write("Введите кол-во товара: ");
-                            int product_count = Int32.Parse(Console.ReadLine());
-                            product1count = product_count;
+                                    product1name = product_name;
+                                    product1price = number1;
+                                    product1count = number2;
+                                    product1company = product_company;
 
-                            Console.Write("Введите название компании производителя: ");
-                            string product_company = Console.ReadLine();
-                            product1company = product_company;
-
-                            Console.WriteLine("Вы успешно создали товар №1 " + product1name);
+                                    Console.WriteLine("Вы успешно создали товар №1 " + product1name);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                                }
+                            } else
+                            {
+                                Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                            }
                         }
                         else
                         {
@@ -171,21 +237,36 @@ namespace UltimateConsole
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
-                            product2name = product_name;
 
                             Console.Write("Введите стоимость товара: ");
-                            int product_price = Int32.Parse(Console.ReadLine());
-                            product2price = product_price;
+                            int number1;
+                            bool is_product_price = Int32.TryParse(Console.ReadLine(), out number1);
+                            if (is_product_price)
+                            {
+                                int number2;
+                                Console.Write("Введите кол-во товара: ");
+                                bool is_product_count = Int32.TryParse(Console.ReadLine(), out number2);
+                                if (is_product_count)
+                                {
+                                    Console.Write("Введите название компании производителя: ");
+                                    string product_company = Console.ReadLine();
 
-                            Console.Write("Введите кол-во товара: ");
-                            int product_count = Int32.Parse(Console.ReadLine());
-                            product2count = product_count;
+                                    product2name = product_name;
+                                    product2price = number1;
+                                    product2count = number2;
+                                    product2company = product_company;
 
-                            Console.Write("Введите название компании производителя: ");
-                            string product_company = Console.ReadLine();
-                            product2company = product_company;
-
-                            Console.WriteLine("Вы успешно создали товар №2 " + product2name);
+                                    Console.WriteLine("Вы успешно создали товар №1 " + product2name);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                            }
                         }
                         else
                         {
@@ -198,21 +279,36 @@ namespace UltimateConsole
                         {
                             Console.Write("Введите название товара: ");
                             string product_name = Console.ReadLine();
-                            product3name = product_name;
 
                             Console.Write("Введите стоимость товара: ");
-                            int product_price = Int32.Parse(Console.ReadLine());
-                            product3price = product_price;
+                            int number1;
+                            bool is_product_price = Int32.TryParse(Console.ReadLine(), out number1);
+                            if (is_product_price)
+                            {
+                                int number2;
+                                Console.Write("Введите кол-во товара: ");
+                                bool is_product_count = Int32.TryParse(Console.ReadLine(), out number2);
+                                if (is_product_count)
+                                {
+                                    Console.Write("Введите название компании производителя: ");
+                                    string product_company = Console.ReadLine();
 
-                            Console.Write("Введите кол-во товара: ");
-                            int product_count = Int32.Parse(Console.ReadLine());
-                            product3count = product_count;
+                                    product3name = product_name;
+                                    product3price = number1;
+                                    product3count = number2;
+                                    product3company = product_company;
 
-                            Console.Write("Введите название компании производителя: ");
-                            string product_company = Console.ReadLine();
-                            product3company = product_company;
-
-                            Console.WriteLine("Вы успешно создали товар №3 " + product3name);
+                                    Console.WriteLine("Вы успешно создали товар №1 " + product3name);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ваше число либо содержит другие символы, либо превышает лимит 2,147,483,647");
+                            }
                         }
                         else
                         {
@@ -231,6 +327,23 @@ namespace UltimateConsole
                     string product_removenum = Console.ReadLine();
                     if (product_removenum == "1")
                     {
+                        if (transition1 == "none")
+                        {
+                            transition1 = "+" + product1price * product1PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        } else if (transition2 == "none")
+                        {
+                            transition2 = "+" + product1price * product1PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        } else if (transition3 == "none")
+                        {
+                            transition3 = "+" + product1price * product1PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        } else
+                        {
+                            transition3 = transition2;
+                            transition2 = transition1;
+                            transition1 = "+" + product1price * product1PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+
+
                         product1count = 0;
                         balance += product1price*product1PurchasedCount;
                         product1name = "";
@@ -238,6 +351,25 @@ namespace UltimateConsole
                     } 
                     else if (product_removenum == "2")
                     {
+                        if (transition1 == "none")
+                        {
+                            transition1 = "+" + product2price * product2PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+                        else if (transition2 == "none")
+                        {
+                            transition2 = "+" + product2price * product2PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+                        else if (transition3 == "none")
+                        {
+                            transition3 = "+" + product2price * product2PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+                        else
+                        {
+                            transition3 = transition2;
+                            transition2 = transition1;
+                            transition1 = "+" + product2price * product2PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+
                         product2count = 0;
                         balance += product2price * product2PurchasedCount;
                         product2name = "";
@@ -245,6 +377,25 @@ namespace UltimateConsole
                     } 
                     else if (product_removenum == "3")
                     {
+                        if (transition1 == "none")
+                        {
+                            transition1 = "+" + product3price * product3PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+                        else if (transition2 == "none")
+                        {
+                            transition2 = "+" + product3price * product3PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+                        else if (transition3 == "none")
+                        {
+                            transition3 = "+" + product3price * product3PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+                        else
+                        {
+                            transition3 = transition2;
+                            transition2 = transition1;
+                            transition1 = "+" + product3price * product3PurchasedCount + "$ прибавлено к вашему счёту за удалённый товар";
+                        }
+
                         product3count = 0;
                         balance += product3price * product3PurchasedCount;
                         product3name = "";
@@ -272,6 +423,25 @@ namespace UltimateConsole
                                 {
                                     if (balance >= product1price * purchase_count)
                                     {
+                                        if (transition1 == "none")
+                                        {
+                                            transition1 = "-" + product1price * product1PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product1name;
+                                        }
+                                        else if (transition2 == "none")
+                                        {
+                                            transition2 = "-" + product1price * product1PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product1name;
+                                        }
+                                        else if (transition3 == "none")
+                                        {
+                                            transition3 = "-" + product1price * product1PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product1name;
+                                        }
+                                        else
+                                        {
+                                            transition3 = transition2;
+                                            transition2 = transition1;
+                                            transition1 = "-" + product1price * product1PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product1name;
+                                        }
+
                                         balance -= product1price * purchase_count;
                                         product1count -= purchase_count;
                                         product1PurchasedCount += purchase_count;
@@ -309,10 +479,29 @@ namespace UltimateConsole
                                 {
                                     if (balance >= product2price * purchase_count)
                                     {
+                                        if (transition1 == "none")
+                                        {
+                                            transition1 = "-" + product2price * product2PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product2name;
+                                        }
+                                        else if (transition2 == "none")
+                                        {
+                                            transition2 = "-" + product2price * product2PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product2name;
+                                        }
+                                        else if (transition3 == "none")
+                                        {
+                                            transition3 = "-" + product2price * product2PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product2name;
+                                        }
+                                        else
+                                        {
+                                            transition3 = transition2;
+                                            transition2 = transition1;
+                                            transition1 = "-" + product2price * product2PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product2name;
+                                        }
+
                                         balance -= product2price * purchase_count;
                                         product2count -= purchase_count;
                                         product2PurchasedCount += purchase_count;
-                                        Console.WriteLine("Вы успешно приобрели товар №1");
+                                        Console.WriteLine("Вы успешно приобрели товар №2");
                                     }
                                     else
                                     {
@@ -346,10 +535,29 @@ namespace UltimateConsole
                                 {
                                     if (balance >= product3price * purchase_count)
                                     {
+                                        if (transition1 == "none")
+                                        {
+                                            transition1 = "-" + product3price * product3PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product3name;
+                                        }
+                                        else if (transition2 == "none")
+                                        {
+                                            transition2 = "-" + product3price * product3PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product3name;
+                                        }
+                                        else if (transition3 == "none")
+                                        {
+                                            transition3 = "-" + product3price * product3PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product3name;
+                                        }
+                                        else
+                                        {
+                                            transition3 = transition2;
+                                            transition2 = transition1;
+                                            transition1 = "-" + product3price * product3PurchasedCount + "$ вычтено из вашего счёта за покупку " + purchase_count + "x " + product3name;
+                                        }
+
                                         balance -= product3price * purchase_count;
                                         product3count -= purchase_count;
                                         product3PurchasedCount += purchase_count;
-                                        Console.WriteLine("Вы успешно приобрели товар №1");
+                                        Console.WriteLine("Вы успешно приобрели товар №3");
                                     }
                                     else
                                     {
@@ -412,6 +620,37 @@ namespace UltimateConsole
                     {
                         Console.WriteLine("Тут пока-что ничего нет...");
                     }
+                }
+                else if (from_user == "transactions")
+                {
+                    Console.WriteLine("3 последних транзакции:");
+                    bool check = false;
+                    if (transition1 != "none")
+                    {
+                        Console.WriteLine(transition1);
+                        check = true;
+                    }
+                    if (transition2 != "none")
+                    {
+                        Console.WriteLine(transition2);
+                        check = true;
+                    }
+                    if (transition3 != "none")
+                    {
+                        Console.WriteLine(transition3);
+                        check = true;
+                    }
+                    if (check == false)
+                    {
+                        Console.WriteLine("Тут пока-что ничего нет...");
+                    }
+                }
+                else if (from_user == "transactions:reset")
+                {
+                    transition1 = "none";
+                    transition2 = "none";
+                    transition3 = "none";
+                    Console.WriteLine("Транзакции были успешно сброшены!");
                 }
                 else
                 {
